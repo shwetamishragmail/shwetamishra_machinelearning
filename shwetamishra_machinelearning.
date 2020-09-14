@@ -1,1 +1,368 @@
+                                                          Topic:- Machine Learning
+ #REGRESSION
+        Regression analysis is a form of predictive modelling techniques which investigates the relationship between a dependent and independent variables.Regression analysis
+involves graphing a line over a set of data points that mostly close to fit the overall shape of the data.A regression shows a changes in dependent variables belong the 'y' axis to
+the change in explanatry variable to the 'x' axis.
 
+           3 Major uses for regression analysis are:-
+           Determining the strength of predictive
+           Forecasting an effect
+           Trend Forecasting
+           
+           Types of Regression:-
+           Linear Regression
+           Logistic Regression
+           Polynomial Regression
+                                    In Linear Regression, the data is modelled is a straight line while in logistic regression, the data is modelled in a sigmoid function.The type of function you are mapping is 
+                                    the main point of linear and logistic regression.  Linear Regression maps a continuous 'X' to continous 'Y' while in logistic regression maps a continous 'X' to binary 'Y'.
+
+     basic                                 linear regression                                               logistic regression
+   core concept                          The data is modelled using a straight line.                     The probability of some obtained event is represented as a linear function of a combination predictor variable.           
+    used with                             continuous variable                                              categorical value
+   output/prediction                     value of the variable                                            probability of occurence of event.
+   Accuracy and goodness of fit          Measured by loss.R squared ,Adjusted R square                    Accuracy,Precision,Recall,f1 score, ROC curve,confusion matrix.
+
+          Linear regression selection criteria:-
+          Classification and regression capabilities
+          Data quality
+          Computational complexity
+          Comprehensible and transparent
+          
+          uses of Linear Regression:-
+          Evaluating sales and estimates
+          Analyzing the impact of price changes
+          Assessment of risk in financial services and insurence domain.
+          
+ #DECISION TREE
+        A Decision tree is a graphocal representation of all the possible solutions to a decision based on certain conditions.
+        Decision trees are constructed via an algorithmic approach that identifies ways to split a data set based on different conditions.
+        It is one of the most widely used and practical methods for supervised learning. Decision Trees are a non-parametric supervised learning method used for both classification and regression tasks.
+       Tree models where the target variable can take a discrete set of values are called classification trees. Decision trees where the target variable can take continuous 
+       values (typically real numbers) are called regression trees. Classification And Regression Tree (CART) is general term for this.
+       
+       Decision tree Terminology:-
+       Root node:- It represent the entire population or sample and gets divided into two or more homogeneous sets.
+       Leaf node:- It is the one when you reach at the end of the tree, that is node cannot be further segregated into further nodes.
+       Splitting:- Splitting is dividing the root node/sunode into different parts on the basis of some conditions.
+       Branch/Subtree:- It is formed by splitting the tree/nodes.
+       Pruning:- It is opposite of splitting means, removing unwanted branches from the tree.
+       Parent/child node:- Root node is the parent and all other nodes branched from it is knoen as child nodes.
+       
+       Approach to make decision tree:-
+       1. Information Gain:-Information gain is used to decide which feature to split on at each step in building the tree. Simplicity is best, so we want to keep our tree small.
+       To do so, at each step we should choose the split that results in the purest daughter nodes. A commonly used measure of purity is called information.
+       For each node of the tree, the information value measures how much information a feature gives us about the class. 
+      The split with the highest information gain will be taken as the first split and the process will continue until all children nodes are pure, or until the information gain is 0.
+       2. Definition of Gini Impurity:-Gini Impurity is a measurement of the likelihood of an incorrect classification of a new instance of a random variable, 
+       if that new instance were randomly classified according to the distribution of class labels from the data set.
+       If our dataset is Pure then likelihood of incorrect classification is 0. If our sample is mixture of different classes then likelihood of incorrect classification will be high.
+      
+      Steps for Making decision tree:-
+      Get list of rows (dataset) which are taken into consideration for making decision tree (recursively at each nodes).
+      Calculate uncertanity of our dataset or Gini impurity or how much our data is mixed up etc.
+      Generate list of all question which needs to be asked at that node.
+      Partition rows into True rows and False rows based on each question asked.
+     Calculate information gain based on gini impurity and partition of data from previous step.
+     Update highest information gain based on each question asked.
+     Update best question based on information gain (higher information gain).
+     Divide the node on best question. Repeat again from step 1 again until we get pure node (leaf nodes).
+
+       Advantage of Decision Tree:-
+          Easy to use and understand.
+          Can handle both categorical and numerical data.
+          Resistant to outliers, hence require little data preprocessing.
+      Disadvantage of Decision Tree:-
+          Prone to overfitting.
+          Require some kind of measurement as to how well they are doing.
+          Need to be careful with parameter tuning.
+         Can create biased learned trees if some classes dominate
+
+
+#RANDOM FOREST 
+       Random forest is a flexible, easy to use machine learning algorithm that produces, even without hyper-parameter tuning, a great result most of the time. 
+       It is also one of the most used algorithms, because of its simplicity and diversity (it can be used for both classification and regression tasks).
+       One big advantage of random forest is that it can be used for both classification and regression problems, which form the majority of current machine learning systems.
+       Random forest has nearly the same hyperparameters as a decision tree or a bagging classifier. Fortunately, there's no need to combine a decision tree with a bagging classifier
+       because you can easily use the classifier-class of random forest.With random forest, you can also deal with regression tasks by using the algorithm's regressor.
+       Random forest adds additional randomness to the model, while growing the trees. Instead of searching for the most important feature while splitting a node, it searches for the best feature among a random subset of features. This results in a wide diversity that generally results in a better model.
+       Therefore, in random forest, only a random subset of the features is taken into consideration by the algorithm for splitting a node. You can even make trees more random
+       by additionally using random thresholds for each feature rather than searching for the best possible thresholds (like a normal decision tree does).   
+       
+       FEATURE IMPORTANCE:-
+       1.  Great quality of the random forest algorithm is that it is very easy to measure the relative importance of each feature on the prediction. Sklearn provides a great tool for 
+        this that measures a feature's importance by looking at how much the tree nodes that use that feature reduce impurity across all trees in the forest. It computes this 
+        score automatically for each feature after training and scales the results so the sum of all importance is equal to one.
+       2. In a decision tree each internal node represents a 'test' on an attribute (e.g. whether a coin flip comes up heads or tails), each branch represents the outcome of
+        the test, and each leaf node represents a class label (decision taken after computing all attributes). A node that has no children is a leaf.
+       IMPORTANT HYPERPARAMETERS:-
+       The hyperparameters in random forest are either used to increase the predictive power of the model or to make the model faster. Let's look at the hyperparameters
+       of sklearns built-in random forest function.
+       1. Increasing the predictive power- Firstly, there is the n_estimators hyperparameter, which is just the number of trees the algorithm builds before taking 
+       the maximum voting or taking the averages of predictions. In general, a higher number of trees increases the performance and makes the predictions more stable, but it also slows down the computation.
+       Another important hyperparameter is max_features, which is the maximum number of features random forest considers to split a node.
+       2. 2. Increasing the model's speed:- The n jobs hyperparameter tells the engine how many processors it is allowed to use. 
+       If it has a value of one, it can only use one processor. A value of “-1” means that there is no limit.The random_state hyperparameter makes the model’s output replicable.
+       The model will always produce the same results when it has a definite value of random_state and if it has been given the same hyperparameters and the same training data.
+       Lastly, there is the oob_score (also called oob sampling), which is a random forest cross-validation method. In this sampling, about one-third of the data is not used to 
+       train the model and can be used to evaluate its performance samples are called the out-of-bag samples. It's very similar to the leave-one-out-cross-validation method.
+          
+        RANDOM FOREST USE CASES:- The random forest algorithm is used in a lot of different fields, like banking, the stock market, medicine and e-commerce. 
+        In finance, for example, it is used to detect customers more likely to repay their debt on time, or use a bank's services more frequently. In this domain it is also 
+        used to detect fraudsters out to scam the bank. In trading, the algorithm can be used to determine a stock's future behavior. 
+        In the healthcare domain it is used to identify the correct combination of components in medicine and to analyze a patient’s medical history to identify diseases.
+        Random forest is used in e-commerce to determine whether a customer will actually like the product or not.
+        
+        
+ #ESEMBLE LEARNING METHODS
+        Ensemble methods is a machine learning technique that combines several base models in order to produce one optimal predictive model. 
+        To better understand this definition lets take a step back into ultimate goal of machine learning and model building.Ensemble learning helps improve machine learning results
+        by combining several models. This approach allows the production of better predictive performance compared to a single model.
+        That is why ensemble methods placed first in many prestigious machine learning competitions, such as the Netflix Competition, KDD 2009, and Kaggle.nsemble methods are meta-algorithms
+        that combine several machine learning techniques into one predictive model in order to decrease variance (bagging), bias (boosting), or improve predictions (stacking).
+        
+        Ensemble methods can be divided into two groups:
+        1. sequential ensemble methods where the base learners are generated sequentially (e.g. AdaBoost).
+        The basic motivation of sequential methods is to exploit the dependence between the base learners. The overall performance can be boosted by weighing previously 
+        mislabeled examples with higher weight.
+        2. parallel ensemble methods where the base learners are generated in parallel (e.g. Random Forest).
+        The basic motivation of parallel methods is to exploit independence between the base learners since the error can be reduced dramatically by averaging.
+        
+        Types of Ensemble Methods:-
+        1. BAGGing, or Bootstrap AGGregating:-BAGGing gets its name because it combines Bootstrapping and Aggregation to form one ensemble model. Given a sample of data, 
+       multiple bootstrapped subsamples are pulled. A Decision Tree is formed on each of the bootstrapped subsample.After each subsample Decision Tree has been formed,
+       an algorithm is used to aggregate over the Decision Trees to form the most efficient predictor. 
+        2. Random Forest Models:-Random Forest Models can be thought of as BAGGing, with a slight tweak. When deciding where to split and how to make decisions,
+        BAGGed Decision Trees have the full disposal of features to choose from. Therefore, although the bootstrapped samples may be slightly different, the data is largely
+        going to break off at the same features throughout each model. In contrary, Random Forest models decide where to split based on a random selection of features.
+        Rather than splitting at similar features at each node throughout, Random Forest models implement a level of differentiation
+        because each tree will split based on different features. This level of differentiation provides a greater ensemble to aggregate over, ergo producing a more accurate predictor.
+        3.  Boosting:-Boosting refers to a family of algorithms that are able to convert weak learners to strong learners. The main principle of boosting is 
+        to fit a sequence of weak learners− models that are only slightly better than random guessing, such as small decision trees− to weighted versions of the data. 
+        The predictions are then combined through a weighted majority vote (classification) or a weighted sum (regression) to produce the final prediction. 
+        The principal difference between boosting and the committee methods, such as bagging, is that base learners are trained in sequence on a weighted version of the data.
+        The algorithm below describes the most widely used form of boosting algorithm called AdaBoost, which stands for adaptive boosting.
+        4. Stacking:-Stacking is an ensemble learning technique that combines multiple classification or regression models via a meta-classifier or a meta-regressor. 
+        The base level models are trained based on a complete training set, then the meta-model is trained on the outputs of the base level model as features.
+        The base level often consists of different learning algorithms and therefore stacking ensembles are often heterogeneous.
+        
+
+#CLUSTERING
+        Clustering is a technique that involves the grouping of data points.we can use a clustering algorithm to classify each data point into a specific group,
+        data points that are in the same group should have similar properties and/or features, while data points in different groups should have highly dissimilar properties 
+        and/or features. Clustering is a method of unsupervised learning and is a common technique for statistical data analysis used in many fields.
+        we can use clustering analysis to gain some valuable insights from our data by seeing what groups the data points fall into when we apply a clustering algorithm
+        1. K-Means Clustering
+        K-Means is probably the most well-known clustering algorithm. It’s taught in a lot of introductory data science and machine learning classes.
+         we first select a number of classes/groups to use and randomly initialize their respective center points. To figure out the number of classes to use, it’s good to take a quick look at the data and try to identify any distinct groupings. 
+         The center points are vectors of the same length as each data point vector and are the “X’s” in the graphic above.
+        Each data point is classified by computing the distance between that point and each group center, and then classifying the point to be in the group whose center is closest to it.
+        Based on these classified points, we recompute the group center by taking the mean of all the vectors in the group.
+        Repeat these steps for a set number of iterations or until the group centers don’t change much between iterations. You can also opt to randomly initialize the group centers a few times, and then select the run that looks like it provided the best results.
+        K-Means has the advantage that it’s pretty fast, as all we’re really doing is computing the distances between points and group centers; very few computations. It thus has a linear complexity O(n). 
+        2. Mean-Shift Clustering:- Mean shift clustering is a sliding-window-based algorithm that attempts to find dense areas of data points. It is a centroid-based algorithm 
+        meaning that the goal is to locate the center points of each group/class, which works by updating candidates for center points to be the mean of the points within the sliding-window.
+        These candidate windows are then filtered in a post-processing stage to eliminate near-duplicates, forming the final set of center points and their corresponding groups  
+         To explain mean-shift we will consider a set of points in two-dimensional space like the above illustration. We begin with a circular sliding window centered at a point C (randomly selected) and having radius r as the kernel. Mean shift is a hill-climbing algorithm that involves shifting this kernel iteratively to a higher density region on each step until convergence.
+        At every iteration, the sliding window is shifted towards regions of higher density by shifting the center point to the mean of the points within the window (hence the name). The density within the sliding window is proportional to the number of points inside it. Naturally, by shifting to the mean of the points in the window it will gradually move towards areas of higher point density.
+        We continue shifting the sliding window according to the mean until there is no direction at which a shift can accommodate more points inside the kernel. Check out the graphic above; we keep moving the circle until we no longer are increasing the density (i.e number of points in the window).
+       This process of steps 1 to 3 is done with many sliding windows until all points lie within a window. When multiple sliding windows overlap the window containing the most points is preserved. The data points 
+       3. Density-Based Spatial Clustering of Applications with Noise (DBSCAN):- DBSCAN is a density-based clustered algorithm similar to mean-shift.
+         DBSCAN begins with an arbitrary starting data point that has not been visited. The neighborhood of this point is extracted using a distance epsilon ε (All points which are within the ε distance are neighborhood points).
+         If there are a sufficient number of points (according to minPoints) within this neighborhood then the clustering process starts and the current data point becomes the first point in the new cluster. Otherwise, the point will be labeled as noise (later this noisy point might become the part of the cluster). In both cases that point is marked as “visited”.
+         For this first point in the new cluster, the points within its ε distance neighborhood also become part of the same cluster. This procedure of making all points in the ε neighborhood belong to the same cluster is then repeated for all of the new points that have been just added to the cluster group.
+         This process of steps 2 and 3 is repeated until all points in the cluster are determined i.e all points within the ε neighborhood of the cluster have been visited and labeled.
+         Once we’re done with the current cluster, a new unvisited point is retrieved and processed, leading to the discovery of a further cluster or noise. This process repeats until all points are marked as visited. Since at the end of this all points have been visited, each point will have been marked as either belonging to a cluster or being noise.
+       4. Expectation–Maximization (EM) Clustering using Gaussian Mixture Models (GMM):-  One of the major drawbacks of K-Means is its naive use of the mean value for the cluster center. We can see why this isn’t the best way of doing things by looking at the image below. On the left-hand side, it looks quite obvious to the human eye that there are two circular clusters with different radius’ centered at the same mean. K-Means can’t handle this because the mean values of the clusters are very close together. K-Means also fails in cases where the clusters are not circular, 
+         again as a result of using the mean as cluster center.Gaussian Mixture Models (GMMs) give us more flexibility than K-Means. With GMMs we assume that the data points are Gaussian distributed; this is a less restrictive assumption than saying they are circular by using the mean. That way, we have two parameters to describe the shape of the clusters: the mean and the standard deviation! Taking an example in two dimensions, this means that the clusters can take any kind of elliptical shape (since we have a standard deviation in both the x and y directions). Thus, each Gaussian distribution is assigned to a single cluster.
+          To find the parameters of the Gaussian for each cluster (e.g the mean and standard deviation), we will use an optimization algorithm called Expectation–Maximization (EM).
+       5. Agglomerative Hierarchical Clustering
+          Hierarchical clustering algorithms fall into 2 categories: top-down or bottom-up. Bottom-up algorithms treat each data point as a single cluster at the outset and then successively merge (or agglomerate) pairs of clusters until all clusters have been merged into a single cluster that contains all data points. Bottom-up hierarchical clustering is therefore called hierarchical agglomerative clustering or HAC. This hierarchy of clusters is represented as a tree (or dendrogram).
+          The root of the tree is the unique cluster that gathers all the samples, the leaves being the clusters with only one sample.
+          Hierarchical clustering does not require us to specify the number of clusters and we can even select which number of clusters looks best since we are building a tree. Additionally, the algorithm is not sensitive to the choice of distance metric; all of them tend to work equally well whereas with other clustering algorithms, the choice of distance metric is critical. A particularly good use case of hierarchical clustering methods is when the underlying data has a hierarchical structure and you want to recover the hierarchy; other clustering algorithms can’t do this. 
+          These advantages of hierarchical clustering come at the cost of lower efficiency, as it has a time complexity of O(n³), unlike the linear complexity of K-Means and GMM.
+       
+ #DIMENSIONALITY REDUCTION
+         In machine learning classification problems, there are often too many factors on the basis of which the final classification is done. These factors are basically variables called features. The higher the number of features, the harder it gets to visualize the training set and then work on it. Sometimes, most of these features are correlated, and hence redundant. This is where dimensionality reduction algorithms come into play. Dimensionality reduction is the process of reducing the number of random variables under consideration, by obtaining a set of principal variables. 
+         It can be divided into feature selection and feature extraction.An intuitive example of dimensionality reduction can be discussed through a simple e-mail classification problem, where we need to classify whether the e-mail is spam or not. This can involve a large number of features, such as whether or not the e-mail has a generic title, the content of the e-mail, whether the e-mail uses a template, etc. However, some of these features may overlap. In another condition, a classification problem that relies on both humidity and rainfall can be collapsed into just one underlying feature, since both of the aforementioned are correlated to a high degree.
+         Hence, we can reduce the number of features in such problems. A 3-D classification problem can be hard to visualize, whereas a 2-D one can be mapped to a simple 2 dimensional space, and a 1-D problem to a simple line. 
+         There are two components of dimensionality reduction:
+
+         Feature selection: In this, we try to find a subset of the original set of variables, or features, to get a smaller subset which can be used to model the problem. It usually involves three ways:
+         Filter
+         Wrapper
+         Embedded
+         Feature extraction: This reduces the data in a high dimensional space to a lower dimension space, i.e. a space with lesser no. of dimensions.
+         
+         The various methods used for dimensionality reduction include:
+         Principal Component Analysis (PCA)
+         Linear Discriminant Analysis (LDA)
+         Generalized Discriminant Analysis (GDA)
+         Dimensionality reduction may be both linear or non-linear, depending upon the method used. The prime linear method, called Principal Component Analysis
+         Principal Component Analysis:- This method was introduced by Karl Pearson. It works on a condition that while the data in a higher dimensional space is mapped to data in a lower dimension space, 
+        the variance of the data in the lower dimensional space should be maximum.
+         It involves the following steps::-Construct the covariance matrix of the data.
+         Compute the eigenvectors of this matrix.
+         Eigenvectors corresponding to the largest eigenvalues are used to reconstruct a large fraction of variance of the original data.
+         Hence, we are left with a lesser number of eigenvectors, and there might have been some data loss in the process. But, the most important variances should be retained by the remaining eigenvectors.
+
+        Advantages of Dimensionality Reduction
+       It helps in data compression, and hence reduced storage space.
+       It reduces computation time.
+       It also helps remove redundant features, if any.
+       Disadvantages of Dimensionality Reduction
+       It may lead to some amount of data loss.
+       PCA tends to find linear correlations between variables, which is sometimes undesirable.
+       PCA fails in cases where mean and covariance are not enough to define datasets.
+      
+#SUPPORT VECTOR MACHINE
+       Support Vector Machine” (SVM) is a supervised machine learning algorithm which can be used for both classification or regression challenges. However,  it is mostly used in classification problems. In the SVM algorithm,
+       we plot each data item as a point in n-dimensional space (where n is number of features you have) with the value of each feature being the value of a particular coordinate. 
+       To separate the two classes of data points, there are many possible hyperplanes that could be chosen. Our objective is to find a plane that has the maximum margin, i.e the maximum distance between data points of both classes. 
+       Maximizing the margin distance provides some reinforcement so that future data points can be classified with more confidence.
+       
+       Working of SVM:- An SVM model is basically a representation of different classes in a hyperplane in multidimensional space. The hyperplane will be generated in an iterative manner by SVM so that the error can be minimized. The goal of SVM is to divide the datasets into classes to find a maximum marginal hyperplane (MMH).
+      The followings are important concepts in SVM −
+       Support Vectors − Datapoints that are closest to the hyperplane is called support vectors. Separating line will be defined with the help of these data points.
+       Hyperplane − As we can see in the above diagram, it is a decision plane or space which is divided between a set of objects having different classes.
+       Margin − It may be defined as the gap between two lines on the closet data points of different classes. It can be calculated as the perpendicular distance from the line to the support vectors. Large margin is considered as a good margin and small margin is considered as a bad margin.
+                              Hyperplanes are decision boundaries that help classify the data points. Data points falling on either side of the hyperplane can be attributed to different classes. Also, the dimension of the hyperplane depends upon the number of features.
+       If the number of input features is 2, then the hyperplane is just a line. If the number of input features is 3, then the hyperplane becomes a two-dimensional plane.  
+       Large Margin Intuition
+       In logistic regression, we take the output of the linear function and squash the value within the range of [0,1] using the sigmoid function. If the squashed value is greater than a threshold value(0.5) we assign it a label 1, else we assign it a label 0. In SVM, we take the output of the linear function and if that output is greater than 1, we identify it with one class and if the output is -1,
+       we identify is with another class. Since the threshold values are changed to 1 and -1 in SVM, we obtain this reinforcement range of values([-1,1]) which acts as margin.
+       cost Function and Gradient Updates
+       In the SVM algorithm, we are looking to maximize the margin between the data points and the hyperplane. The loss function that helps maximize the margin is hinge loss. 
+       The cost is 0 if the predicted value and the actual value are of the same sign. If they are not, we then calculate the loss value. We also add a regularization parameter the cost function.
+       The objective of the regularization parameter is to balance the margin maximization and loss. 
+       The main goal of SVM is to divide the datasets into classes to find a maximum marginal hyperplane (MMH) and it can be done in the following two steps −
+       First, SVM will generate hyperplanes iteratively that segregates the classes in best way.
+       Then, it will choose the hyperplane that separates the classes correctly.
+      
+      Pros and Cons of SVM Classifiers
+      Pros of SVM classifiers:-SVM classifiers offers great accuracy and work well with high dimensional space. SVM classifiers basically use a subset of training points hence in result uses very less memory.
+      Cons of SVM classifiers:-They have high training time hence in practice not suitable for large datasets. Another disadvantage is that SVM classifiers do not work well with overlapping classes
+       
+#BOOSTING
+     Boosting is one of the techniques that uses the concept of ensemble learning. A boosting algorithm combines multiple simple models (also known as weak learners or base estimators) to generate the final output.
+      Types of Boosting Algorithms:-
+      Underlying engine used for boosting algorithms can be anything.  It can be decision stamp, margin-maximizing classification algorithm etc. There are many boosting algorithms which use other types of engine such as:
+      1.AdaBoost (Adaptive Boosting)
+      2.Gradient Tree Boosting
+      3.XGBoost
+      
+      1. Gradient Boosting Machine (GBM):- A Gradient Boosting Machine or GBM combines the predictions from multiple decision trees to generate the final predictions. Keep in mind that all the weak learners in a gradient boosting machine are decision trees.
+      But if we are using the same algorithm, then how is using a hundred decision trees better than using a single decision tree? How do different decision trees capture different signals/information from the data?
+      the nodes in every decision tree take a different subset of features for selecting the best split. This means that the individual trees aren’t all the same and hence they are able to capture different signals from the data.
+     Additionally, each new tree takes into account the errors or mistakes made by the previous trees. So, every successive decision tree is built on the errors of the previous trees. This is how the trees in a gradient boosting machine algorithm are built sequentially.
+     2.  Extreme Gradient Boosting Machine (XGBM):-Extreme Gradient Boosting or XGBoost is another popular boosting algorithm. In fact, XGBoost is simply an improvised version 
+     of the GBM algorithm.The working procedure of XGBoost is the same as GBM. The trees in XGBoost are built sequentially, trying to correct the errors of the previous trees.
+     One of the most important points is that XGBM implements parallel preprocessing (at the node level) which makes it faster than GBM
+     XGBoost also includes a variety of regularization techniques that reduce overfitting and improve overall performance. You can select the regularization technique 
+     by setting the hyperparameters of the XGBoost algorithm.
+     3.  LightGBM:-The LightGBM boosting algorithm is becoming more popular by the day due to its speed and efficiency. 
+         LightGBM is able to handle huge amounts of data with ease. But keep in mind that this algorithm does not perform well with a small number of data points.
+     4. CatBoost:-CatBoost is a boosting algorithm that can handle categorical variables in the data. Most machine learning algorithms cannot work with strings or categories in the data. Thus, converting categorical variables into numerical values is an essential preprocessing step.
+        CatBoost can internally handle categorical variables in the data. These variables are transformed to numerical ones using various statistics on combinations of feature
+ 
+     WORKING
+    To find weak rule, we apply base learning (ML) algorithms with a different distribution. Each time base learning algorithm is applied, it generates a new weak prediction rule. 
+    This is an iterative process. After many iterations, the boosting algorithm combines these weak rules into a single strong prediction rule.
+    For choosing the right distribution, here are the following steps:
+    Step 1:  The base learner takes all the distributions and assign equal weight or attention to each observation.
+    Step 2: If there is any prediction error caused by first base learning algorithm, then we pay higher attention to observations having prediction error.
+   Then, we apply the next base learning algorithm.
+    Step 3: Iterate Step 2 till the limit of base learning algorithm is reached or higher accuracy is achieved.
+    Finally, it combines the outputs from weak learner and creates  a strong learner which eventually improves the prediction power of the model.
+    Boosting pays higher focus on examples which are mis-classiﬁed or have higher errors by preceding weak rules.
+    
+#BIAS VARIANCE
+     Bias is basically how far we have predicted the value from the actual value. We say the bias is too high if the average predictions are far off from the actual values.
+     A high bias will cause the algorithm to miss a dominant pattern or relationship between the input and output variables. When the bias is too high,
+     it is assumed that the model is quite simple and does not fathom the complexity of the data set to determine the relationship and thus, causing underfitting.Bias is the difference between the average prediction of our model and the correct value which we are trying to predict. Model with high bias pays very little attention to the training data and oversimplifies the model. It always leads to high error on training and test data.
+     
+     What is variance:-Variance is the variability of model prediction for a given data point or a value which tells us spread of our data. Model with high variance pays a lot of attention to training data and does not generalize on the data which it hasn’t seen before. 
+     As a result, such models perform very well on training data but has high error rates on test data.
+     On an independent, unseen data set or a validation set. When a model does not perform as well as it does with the trained data set, there is a possibility that the model has a variance. It basically tells how scattered the predicted values are from the actual values.
+    A high variance in a data set means that the model has trained with a lot of noise and irrelevant data. Thus causing overfitting in the model. When a model has high variance, 
+    it becomes very flexible and makes wrong predictions for new data points. Because it has tuned itself to the data points of the training set.
+     
+     How Does It Affect The Machine Learning Model?
+     We can put the relationship between bias-variance in four categories listed below:
+     High Variance-High Bias – The model is inconsistent and also inaccurate on average
+     Low Variance-High Bias – Models are consistent but low on average
+     High Variance-Low Bias – Somewhat accurate but inconsistent on averages
+     Low Variance-Low Bias – It is the ideal scenario, the model is consistent and accurate on average.
+     
+     Although detecting bias and variance in a model is quite evident. A model with high variance will have a low training error and high validation error. And in the case of high bias, the model will have high training error and validation error is the same as training error.
+     While detecting seems easy, the real task is to reduce it to the minimum. In that case, we can do the following:
+    Add more input features:-
+    More complexity by introducing polynomial features
+    Decrease regularization term
+    Getting more training data
+    
+    Bias-Variance Trade-Off:-Finding the right balance between the bias and variance of the model is called the Bias-Variance trade-off. 
+    It is basically a way to make sure the model is neither overfitted or underfitted in any case.If the model is too simple and has very few parameters, it will suffer from high bias and low variance. On the other hand, if the model has a large number of parameters, it will have high variance and low bias. This trade-off should result in a perfectly balanced relationship between the two. 
+    Ideally, low bias and low variance is the target for any Machine Learning model.
+    If the algorithm is too simple (hypothesis with linear eq.) then it may be on high bias and low variance condition and thus is error-prone. If algorithms fit too complex ( hypothesis with high degree eq.) then it may be on high variance and low bias. In the latter condition, the new entries will not perform well. Well, there is something between both of these conditions, known as Trade-off or Bias Variance Trade-off.
+    This tradeoff in complexity is why there is a tradeoff between bias and variance. An algorithm can’t be more complex and less complex at the same time.
+    
+#EVALUATION METRICES
+      Evaluation metrics are used to measure the quality of the statistical or machine learning model. Evaluating machine learning models or algorithms is essential for any project.
+      There are many different types of evaluation metrics available to test a model. These include classification accuracy, logarithmic loss, confusion matrix, and others. Classification accuracy is the ratio of the number of correct predictions to the total number of input samples, which is usually what we refer to when we use the term accuracy. Logarithmic loss, also called log loss, works by penalizing the false classifications. 
+      A confusion matrix gives us a matrix as output and describes the complete performance of the model. There are other evaluation metrics that can be used that have not been listed. Evaluation metrics involves using a combination of these individual evaluation metrics to test a model or algorithm. 
+      valuation metrics are used to measure the quality of the statistical or machine learning model. Evaluating machine learning models or algorithms is essential for any project.
+      Evaluation metrics involves using a combination of these individual evaluation metrics to test a model or algorithm.
+      Why is this Useful?
+      It is very important to use multiple evaluation metrics to evaluate your model. This is because a model may perform well using one measurement from one evaluation metric, but may perform poorly using another measurement from another evaluation metric. Using evaluation metrics are critical in ensuring that your model is operating correctly and optimally. 
+      Applications of Evaluation Metrics
+      Statistical Analysis
+      Machine Learning
+      
+      F1-Score is the harmonic mean of precision and recall values for a classification problem. 
+      F1= (recall+precision/2) = (2.precision*recall/precision+recall)
+      Precision: 0, Recall: 1
+      Here, if we take the arithmetic mean, we get 0.5. It is clear that the above result comes from a dumb classifier which just ignores the input and just predicts one of the classes as output. Now, if we were to take HM, we will get 0 which is accurate as this model is useless for all purposes.
+     This seems simple. There are situations however for which a data scientist would like to give a percentage more importance/weight to either precision or recall
+     
+     AOC AND ROC CURVE:-This is again one of the popular metrics used in the industry.  The biggest advantage of using ROC curve is that it is independent of the change in proportion of responders
+     The ROC curve is the plot between sensitivity and (1- specificity). (1- specificity) is also known as false positive rate and sensitivity is also known as True Positive rate
+     the sensitivity at this threshold is 99.6% and the (1-specificity) is ~60%. This coordinate becomes on point in our ROC curve. To bring this curve down to a single number, we find the area under this curve (AUC).
+     Note that the area of entire square is 1*1 = 1. Hence AUC itself is the ratio under the curve and the total area. For the case in hand, we get AUC ROC as 96.4%. Following are a few thumb rules:
+    .90-1 = excellent (A)
+    .80-.90 = good (B)
+    .70-.80 = fair (C)
+    .60-.70 = poor (D)
+    .50-.60 = fail (F)
+    AUC - ROC curve is a performance measurement for classification problem at various thresholds settings. ROC is a probability curve and AUC represents degree or measure of separability. It tells how much model is capable of distinguishing between classes. Higher the AUC, better the model is at predicting 0s as 0s and 1s as 1s. 
+    By analogy, Higher the AUC, better the model is at distinguishing between patients with disease and no disease.
+    An excellent model has AUC near to the 1 which means it has good measure of separability. A poor model has AUC near to the 0 which means it has worst measure of separability. In fact it means it is reciprocating the result. 
+    It is predicting 0s as 1s and 1s as 0s. And when AUC is 0.5, it means model has no class separation capacity whatsoever.
+   
+    NOTE:- 1. For a model which gives class as output, will be represented as a single point in ROC plot.
+          2. Such models cannot be compared with each other as the judgement needs to be taken on a single metric and not using multiple metrics. For instance, model with parameters (0.2,0.8) and model with parameter (0.8,0.2) can be coming out of the same model, hence these metrics should not be directly compared.
+          3. In case of probabilistic model, we were fortunate enough to get a single number which was AUC-ROC. But still, we need to look at the entire curve to make conclusive decisions. It is also possible that one model performs better in some region and other performs better in other.
+        Advantages of using ROC
+        Why should you use ROC and not metrics like lift curve?
+        Lift is dependent on total response rate of the population. Hence, if the response rate of the population changes, the same model will give a different lift chart. A solution to this concern can be true lift chart (finding the ratio of lift and perfect model lift at each decile). But such ratio rarely makes sense for the business.
+        ROC curve on the other hand is almost independent of the response rate. This is because it has the two axis coming out from columnar calculations of confusion matrix. 
+        The numerator and denominator of both x and y axis will change on similar scale in case of response rate shift.
+
+     #PRECISION AND RECALL:- Precision and recall are two numbers which together are used to evaluate the performance of classification or information retrieval systems. Precision is defined as the fraction of relevant instances among all retrieved instances. Recall, sometimes referred to as ‘sensitivity, is the fraction of retrieved instances among all relevant instances. A perfect classifier has precision and recall both equal to 1.
+                        It is often possible to calibrate the number of results returned by a model and improve precision at the expense of recall, or vice versa.
+                        Precision and recall should always be reported together. Precision and recall are sometimes combined together into the F-score, if a single numerical measurement of a system's performance is required.
+                    Precision and Recall Formula Symbols Explained:-
+                    The true positive rate, that is the number of instances which are relevant and which the model correctly identified as relevant.
+                    The false positive rate, that is the number of instances which are not relevant but which the model incorrectly identified as relevant.
+                    The false negative rate, that is the number of instances which are relevant and which the model incorrectly identified as not relevant.
+ 
+             Calculating Precision and Recall
+             1. Search engine:-The search engine finds four web pages for you. Three pages are about cats, the topic of interest, and one page is about something entirely different, and the search engine gave it to you by mistake.
+             In addition, there are four relevant documents on the internet, which the search engine missed.
+             In this case we have three true positives, so tp = 3. There is one false positive, fp = 1. And there are four false negatives, so fn = 4. 
+             Note that to calculate precision and recall, we do not need to know the total number of true negatives (the irrelevant documents which were not retrieved).
+            2: Disease diagnosis:-Suppose we have a medical test which is able to identify patients with a certain disease. We test 20 patients and the test identifies 8 of them as having the disease. Of the 8 identified by the test, 5 actually had the disease (true positives), while the other 3 did not (false positives). 
+             We later find out that the test missed 4 additional patients who turned out to really have the disease (false negatives).
+             
+             
+    
+         
